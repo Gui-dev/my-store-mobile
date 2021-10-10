@@ -1,0 +1,12 @@
+{
+  "name": "store-mobile",
+  "displayName": "store-mobile",
+  "expo": {
+    "name": "store-mobile",
+    "slug": "store-mobile",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
