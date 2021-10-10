@@ -4,6 +4,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Home } from './../screens/Home'
 import { Cart } from './../screens/Cart'
 
+export type RootStackParamList = {
+  Home: undefined
+  Cart: undefined
+}
+
 export const Routes = () => {
   const { Navigator, Screen } = createNativeStackNavigator()
 
