@@ -28,6 +28,13 @@ export const Price = styled.Text`
   margin-top: 10px;
 `
 
+export const Subtotal = styled.Text`
+  align-self: center;
+  font-size: ${text.normal};
+  color: ${colors['gray-100']};
+  margin-top: 10px;
+`
+
 export const ButtonContainer = styled.View`
   align-items: center;
   justify-content: space-between;
