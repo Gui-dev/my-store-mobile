@@ -5,6 +5,7 @@ import { colors, text } from '../../styles/global'
 export const Container = styled.View`
   padding: 15px;
   background-color: ${colors['gray-600']};
+  margin-bottom: 20px;
 `
 
 export const Image = styled.Image`
