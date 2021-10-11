@@ -8,5 +8,5 @@ export const Container = styled.View`
 `
 
 export const Content = styled.View`
-  margin: 15px 5%;
+  margin: 15px 10%;
 `

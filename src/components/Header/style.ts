@@ -13,7 +13,8 @@ export const Content = styled.View`
   justify-content: space-between;
   flex-direction: row;
   height: 80px;
-  margin: 0 5%;
+  margin: 0 10%;
+  margin-top: 15px;
 `
 
 export const ButtonLink = styled(RectButton)`
