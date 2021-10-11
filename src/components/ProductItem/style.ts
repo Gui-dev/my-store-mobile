@@ -31,7 +31,6 @@ export const Price = styled.Text`
 `
 
 export const Button = styled(RectButton)`
-  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
