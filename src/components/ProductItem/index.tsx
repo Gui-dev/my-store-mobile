@@ -11,16 +11,20 @@ type ProductItemProps = {
     price: string
     image: string
     stock: number
-  }
+    formattedPrice: string
+  },
+  onAddProductToCart: (productId: string) => Promise<void>
 }
 
-export const ProductItem = ({ product }: ProductItemProps) => {
+export const ProductItem = ({ product, onAddProductToCart }: ProductItemProps) => {
   return (
     <Container>
       <Image source={{ uri: product.image }}/>
       <Title>{product.name}</Title>
-      <Price>{product.price}</Price>
-      <Button>
+      <Price>{product.formattedPrice}</Price>
+      <Button
+        onPress={ () => onAddProductToCart(product.id) }
+      >
         <Feather name="shopping-cart" size={32} color="#FFF"/>
         <ButtonText>Add to cart</ButtonText>
       </Button>

@@ -1,38 +1,57 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 
 import { ProductItem } from '../../components/ProductItem'
+import { useCart } from '../../hooks/useCart'
+import { api } from '../../services/api'
+import { formattedPrice } from '../../utils/formattedPrice'
 import { Container, Content } from './style'
 
+type Product = {
+  id: string
+  createdAt: string
+  name: string
+  price: string
+  image: string
+  stock: number
+  formattedPrice: string
+}
+
 export const Home = () => {
-  const products = [
-    {
-      id: '1',
-      createdAt: '2019-09-02T12:58:54.103Z',
-      name: 'Rustic Metal Fish',
-      price: '289.00',
-      image: 'http://lorempixel.com/640/480/food',
-      stock: 65171
-    },
-    {
-      id: '2',
-      createdAt: '2019-09-02T12:58:54.103Z',
-      name: 'Rustic Metal Fish',
-      price: '289.00',
-      image: 'http://lorempixel.com/640/480/food',
-      stock: 65171
-    }
-  ]
+  const [products, setProducts] = useState<Product[]>([])
+  const { addProduct } = useCart()
+
+  useEffect(() => {
+    api.get<Product[]>('/product')
+      .then(response => {
+        const result = response.data.map(product => {
+          return {
+            ...product,
+            formattedPrice: formattedPrice(Number(product.price))
+          }
+        })
+
+        setProducts(result)
+      })
+  }, [])
+
+  const handleAddProductToCart = async (productId: string) => {
+    await addProduct(productId)
+  }
 
   return (
     <Container>
       <Content>
         <FlatList
-          data={ products }
+          data={ products.slice(0, 9) }
           keyExtractor={ item => item.id }
           renderItem={({ item }) => {
             return (
-              <ProductItem key={ String(item.id) } product={ item }/>
+              <ProductItem
+                key={ String(item.id) }
+                product={ item }
+                onAddProductToCart={ handleAddProductToCart }
+              />
             )
           }}
           showsVerticalScrollIndicator={ false }
