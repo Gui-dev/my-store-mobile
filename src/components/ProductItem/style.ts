@@ -34,6 +34,7 @@ export const Button = styled(RectButton)`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
   margin-top: 20px;
   height: 50px;
   width: 100%;
@@ -46,4 +47,5 @@ export const ButtonText = styled.Text`
   font-size: ${text.extraHeading};
   font-weight: bold;
   color: ${colors.white};
+  margin-left: 10px;
 `

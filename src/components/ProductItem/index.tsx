@@ -1,4 +1,5 @@
 import React from 'react'
+import { Feather } from '@expo/vector-icons'
 
 import { Container, Image, Title, Price, Button, ButtonText } from './style'
 
@@ -20,6 +21,7 @@ export const ProductItem = ({ product }: ProductItemProps) => {
       <Title>{product.name}</Title>
       <Price>{product.price}</Price>
       <Button>
+        <Feather name="shopping-cart" size={32} color="#FFF"/>
         <ButtonText>Add to cart</ButtonText>
       </Button>
     </Container>
