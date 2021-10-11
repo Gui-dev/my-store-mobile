@@ -3,15 +3,16 @@ import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { Feather } from '@expo/vector-icons'
 
-// import { useCart } from '../../hooks/useCart'
+import { useCart } from '../../hooks/useCart'
 
 import { RootStackParamList } from '../../routes'
-import { Container, Content, ButtonLink, ButtonLinkText } from './style'
+import { Container, Content, ButtonLink, ButtonLinkText, CartItemAmount, CartItemAmountText } from './style'
 
 type HeaderScreenProps = NativeStackNavigationProp<RootStackParamList, 'Home'>
 
 export const Header = () => {
-  // const { cart } = useCart()
+  const { cart } = useCart()
+  const cartItems = cart.length
   const { navigate } = useNavigation<HeaderScreenProps>()
 
   const handleNavigationToHome = () => {
@@ -36,6 +37,9 @@ export const Header = () => {
         <ButtonLink
           onPress={ handleNavigationToCart }
         >
+          <CartItemAmount>
+            <CartItemAmountText>{ cartItems }</CartItemAmountText>
+          </CartItemAmount>
           <Feather name="shopping-cart" size={24} color="#FFF"/>
         </ButtonLink>
       </Content>

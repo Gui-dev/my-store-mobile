@@ -18,6 +18,7 @@ export const Content = styled.View`
 `
 
 export const ButtonLink = styled(RectButton)`
+  position: relative;
   align-items: center;
   justify-content: center;
   flex-direction: row;
@@ -25,5 +26,24 @@ export const ButtonLink = styled(RectButton)`
 
 export const ButtonLinkText = styled.Text`
   font-size: ${text.heading};
+  color: ${colors.white};
+`
+
+export const CartItemAmount = styled.View`
+  position: absolute;
+  top: -25px;
+  right:  20px;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+  background-color: ${colors['green-500']};
+  border-radius: 15px;
+  z-index: 4;
+`
+
+export const CartItemAmountText = styled.Text`
+  font-size: ${text.normal};
+  font-weight: bold;
   color: ${colors.white};
 `
