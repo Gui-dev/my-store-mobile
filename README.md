@@ -1,9 +1,11 @@
 <h1 align="center">MyStore.</h1>
 <p>
-Uma loja simples em React utilizando Typescript, com um catálogo de produtos e um carrinho de compras. Você pode adicionar/remover produtos do catálogo no carrinho de compras
+Uma loja simples em React Native utilizando Typescript, com um catálogo de produtos e um carrinho de compras. Você pode adicionar/remover produtos do catálogo no carrinho de compras
 </p>
 
+<div align="center">
 ![Home](./screens/home.gif)
+</div>
 
 ## Technologies used
   - [React Native](https://reactnative.dev)
