@@ -35,6 +35,7 @@ export const Home = () => {
               <ProductItem key={ String(item.id) } product={ item }/>
             )
           }}
+          showsVerticalScrollIndicator={ false }
         />
       </Content>
     </Container>
