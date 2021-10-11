@@ -35,8 +35,8 @@ export const Home = () => {
       })
   }, [])
 
-  const handleAddProductToCart = async (productId: string) => {
-    await addProduct(productId)
+  const handleAddProductToCart = (productId: string) => {
+    addProduct(productId)
   }
 
   return (
