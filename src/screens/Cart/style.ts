@@ -14,6 +14,17 @@ export const Content = styled.ScrollView.attrs({
   margin: 0 10%;
 `
 
+export const EmptyCart = styled.View`
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+`
+
+export const EmptyCartText = styled.Text`
+  font-size: ${text.heading};
+  color: ${colors.white};
+`
+
 export const TotalContainer = styled.View`
   align-items: center;
   justify-content: flex-end;

@@ -1,59 +1,84 @@
 import React from 'react'
 
 import { CartItem } from '../../components/CartItem'
+import { useCart } from '../../hooks/useCart'
+import { formattedPrice } from '../../utils/formattedPrice'
 import {
-  Container, Content, TotalContainer, TotalText, TotalValue,
+  Container, Content, EmptyCart, EmptyCartText, TotalContainer, TotalText, TotalValue,
   ButtonCheckout, ButtonCheckoutText
 } from './style'
 
 export const Cart = () => {
-  const products = [
-    {
-      id: '1',
-      createdAt: '2019-09-02T12:58:54.103Z',
-      name: 'Rustic Metal Fish',
-      price: '289.00',
-      image: 'http://lorempixel.com/640/480/food',
-      stock: 65171
-    },
-    {
-      id: '3',
-      createdAt: '2019-09-02T12:58:54.103Z',
-      name: 'Rustic Metal Fish',
-      price: '289.00',
-      image: 'http://lorempixel.com/640/480/food',
-      stock: 65171
-    },
-    {
-      id: '2',
-      createdAt: '2019-09-02T12:58:54.103Z',
-      name: 'Rustic Metal Fish',
-      price: '289.00',
-      image: 'http://lorempixel.com/640/480/food',
-      stock: 65171
+  const { cart, removeProduct, updateProductAmount } = useCart()
+
+  const products = cart.map(cartItem => {
+    return {
+      ...cartItem,
+      formattedPrice: formattedPrice(Number(cartItem.price)),
+      subtotal: formattedPrice(Number(cartItem.price) * cartItem.amount)
     }
-  ]
+  })
+
+  const total = formattedPrice(
+    products.reduce((totalValue, product) => {
+      totalValue += Number(product.price) * Number(product.amount)
+
+      return totalValue
+    }, 0)
+  )
+
+  const handleRemoveProduct = (productId: string) => {
+    removeProduct(productId)
+  }
+
+  const handleIncrementProductAmount = (productId: string, amount: number) => {
+    updateProductAmount(productId, amount + 1)
+  }
+
+  const handleIDecrementProductAmount = (productId: string, amount: number) => {
+    updateProductAmount(productId, amount - 1)
+  }
 
   return (
     <Container>
       <Content>
-        { products.map(product => {
-          return (
-            <CartItem
-              key={ String(product.id) }
-              product={ product }
-            />
-          )
-        }) }
+        {
+          products && products.length > 0
+            ? (
+                products.map(product => {
+                  return (
+                <CartItem
+                  key={ String(product.id) }
+                  product={ product }
+                  onRemoveProduct={ handleRemoveProduct }
+                  onIncrementProductAmount={ handleIncrementProductAmount }
+                  onDecrementProductAmount={ handleIDecrementProductAmount }
+                />
+                  )
+                })
+              )
+            : (
+            <EmptyCart>
+              <EmptyCartText>
+                Você ainda não tem produtos no carrinho
+              </EmptyCartText>
+            </EmptyCart>
+              )
+        }
 
-        <TotalContainer>
-          <TotalText>Total</TotalText>
-          <TotalValue>R$ 2.800,00</TotalValue>
-        </TotalContainer>
+        {products && products.length > 0 && (
+          <>
+            <TotalContainer>
+              <TotalText>Total</TotalText>
+              <TotalValue>{ total }</TotalValue>
+            </TotalContainer>
 
-        <ButtonCheckout>
-          <ButtonCheckoutText>Checkout</ButtonCheckoutText>
-        </ButtonCheckout>
+            <ButtonCheckout>
+              <ButtonCheckoutText>Checkout</ButtonCheckoutText>
+            </ButtonCheckout>
+          </>
+        )}
+
       </Content>
     </Container>
   )
