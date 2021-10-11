@@ -13,7 +13,7 @@ type ProductItemProps = {
     stock: number
     formattedPrice: string
   },
-  onAddProductToCart: (productId: string) => Promise<void>
+  onAddProductToCart: (productId: string) => void
 }
 
 export const ProductItem = ({ product, onAddProductToCart }: ProductItemProps) => {
