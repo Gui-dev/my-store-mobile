@@ -3,9 +3,9 @@
 Uma loja simples em React Native utilizando Typescript, com um catálogo de produtos e um carrinho de compras. Você pode adicionar/remover produtos do catálogo no carrinho de compras
 </p>
 
-<div align="center">
-![Home](./screens/home.gif)
-</div>
+<p align="center">
+  <img src="./screens/home.gif" alt="Um gif animado demonstrando o app"/>
+</p>
 
 ## Technologies used
   - [React Native](https://reactnative.dev)
